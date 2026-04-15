@@ -31,7 +31,6 @@
 
         body {
             font-family: var(--main-font);
-            background-color: var(--bg-color);
             color: var(--text-main);
             display: flex;
             flex-direction: column;
@@ -40,28 +39,37 @@
             overflow-x: hidden;
         }
 
-        /* Discreet Wave Animation Background */
-        .wave-bg {
-            position: absolute;
-            bottom: 0;
+        /* Video Background Styling */
+        .video-container {
+            position: fixed;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 15vh;
-            min-height: 100px;
-            opacity: 0.05;
-            z-index: 1;
-            pointer-events: none;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            background-color: var(--bg-color); /* Fallback */
         }
 
-        .wave-path {
-            fill: var(--brand-bronze);
-            animation: waveMotion 15s linear infinite;
+        #bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        @keyframes waveMotion {
-            0% { d: path("M0,10 C150,50 350,0 500,10 C650,20 850,-10 1000,10 L1000,100 L0,100 Z"); }
-            50% { d: path("M0,10 C150,0 350,50 500,10 C650,-10 850,20 1000,10 L1000,100 L0,100 Z"); }
-            100% { d: path("M0,10 C150,50 350,0 500,10 C650,20 850,-10 1000,10 L1000,100 L0,100 Z"); }
+        /* Essential for readable text over video */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(251, 251, 251, 0.88); /* Light overlay matching original bg */
+            z-index: -1;
         }
 
         /* Animations */
@@ -87,7 +95,7 @@
             text-align: center;
             animation: fadeInUp 1s ease-out forwards;
             position: relative;
-            z-index: 2; /* Sit above the background wave */
+            z-index: 1; 
         }
 
         .logo-container {
@@ -137,8 +145,9 @@
             max-width: 650px;
             font-size: 1rem;
             line-height: 1.8;
-            color: #666;
+            color: #444;
             margin-bottom: 3rem;
+            font-weight: 400;
         }
 
         /* Enhanced Progress Indicator with Cargo Ship */
@@ -148,26 +157,26 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            color: rgba(0,0,0,0.15);
+            color: rgba(0,0,0,0.2);
             font-size: 1.5rem;
         }
         
         .progress-line {
             width: 150px;
             height: 1px;
-            background: rgba(0,0,0,0.1);
+            background: rgba(0,0,0,0.15);
         }
 
         /* Footer Redesign - Slimmer & Tighter */
         footer {
             width: 100%;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
         .footer-dark {
             background-color: var(--brand-dark);
-            padding: 2.5rem 5% 1.5rem; /* Reduced padding to make it slimmer */
+            padding: 2.5rem 5% 1.5rem;
             display: flex;
             justify-content: center;
             gap: 8%;
@@ -177,7 +186,7 @@
         .footer-column {
             flex: 0 1 280px;
             color: var(--text-light);
-            margin-bottom: 1rem; /* Tighter bottom margin */
+            margin-bottom: 1rem;
         }
 
         .column-heading {
@@ -193,7 +202,7 @@
         }
 
         .footer-content {
-            font-size: 0.8rem; /* Slightly smaller text for a more refined look */
+            font-size: 0.8rem;
             line-height: 1.6;
             letter-spacing: 0.05em;
             opacity: 0.85;
@@ -206,7 +215,7 @@
 
         .footer-bronze {
             background-color: var(--brand-bronze);
-            height: 25px; /* Thinner bronze strip */
+            height: 25px;
             width: 100%;
         }
 
@@ -252,9 +261,13 @@
 </head>
 <body>
 
-    <svg class="wave-bg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-        <path class="wave-path" d="M0,10 C150,50 350,0 500,10 C650,20 850,-10 1000,10 L1000,100 L0,100 Z"></path>
-    </svg>
+    <div class="video-container">
+        <video autoplay loop muted playsinline id="bg-video">
+            <source src="https://videos.pexels.com/video-files/7687564/7687564-hd_1920_1080_30fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+    </div>
 
     <main>
         <div class="logo-container">
