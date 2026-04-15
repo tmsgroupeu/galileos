@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon | Galileos Trade & Services LTD</title>
+    <title>Setting Course | Galileos Trade & Services LTD</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,11 +14,13 @@
     <style>
         /* CSS Reset & Variables */
         :root {
-            --brand-dark: #1f2120; /* Extracted charcoal/black */
-            --brand-bronze: #847661; /* Extracted bronze/olive */
+            --brand-dark: #1f2120; /* Deep charcoal */
+            --brand-bronze: #847661; /* Corporate bronze/olive */
             --text-main: #333333;
             --text-light: #ffffff;
             --bg-color: #fbfbfb;
+            --main-font: 'Montserrat', sans-serif;
+            --heading-font: 'Cinzel', serif;
         }
 
         * {
@@ -28,13 +30,38 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--main-font);
             background-color: var(--bg-color);
             color: var(--text-main);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            position: relative;
             overflow-x: hidden;
+        }
+
+        /* Discreet Wave Animation Background */
+        .wave-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh;
+            min-height: 100px;
+            opacity: 0.05;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .wave-path {
+            fill: var(--brand-bronze);
+            animation: waveMotion 15s linear infinite;
+        }
+
+        @keyframes waveMotion {
+            0% { d: path("M0,10 C150,50 350,0 500,10 C650,20 850,-10 1000,10 L1000,100 L0,100 Z"); }
+            50% { d: path("M0,10 C150,0 350,50 500,10 C650,-10 850,20 1000,10 L1000,100 L0,100 Z"); }
+            100% { d: path("M0,10 C150,50 350,0 500,10 C650,20 850,-10 1000,10 L1000,100 L0,100 Z"); }
         }
 
         /* Animations */
@@ -59,10 +86,12 @@
             padding: 4rem 2rem;
             text-align: center;
             animation: fadeInUp 1s ease-out forwards;
+            position: relative;
+            z-index: 2; /* Sit above the background wave */
         }
 
         .logo-container {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .logo-container img {
@@ -70,8 +99,8 @@
             height: auto;
         }
 
-        h1.company-name {
-            font-family: 'Cinzel', serif;
+        .company-name {
+            font-family: var(--heading-font);
             font-size: 3rem;
             font-weight: 700;
             letter-spacing: 0.15em;
@@ -80,7 +109,7 @@
             text-transform: uppercase;
         }
 
-        h2.company-suffix {
+        .company-suffix {
             font-size: 1rem;
             font-weight: 500;
             letter-spacing: 0.3em;
@@ -96,94 +125,85 @@
             margin: 0 auto 2.5rem;
         }
 
-        .coming-soon-text {
-            font-size: 2rem;
+        .sub-heading {
+            font-size: 2.2rem;
             font-weight: 300;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
             color: var(--brand-dark);
             margin-bottom: 1rem;
-            text-transform: uppercase;
         }
 
         .description {
-            max-width: 600px;
+            max-width: 650px;
             font-size: 1rem;
             line-height: 1.8;
             color: #666;
             margin-bottom: 3rem;
         }
 
-        /* Progress Line representing the Maritime Horizon */
-        .loading-line {
-            width: 200px;
+        /* Enhanced Progress Indicator with Cargo Ship */
+        .progress-indicator {
+            width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: rgba(0,0,0,0.15);
+            font-size: 1.5rem;
+        }
+        
+        .progress-line {
+            width: 150px;
             height: 1px;
             background: rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-            margin: 0 auto;
         }
 
-        .loading-line::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 50%;
-            height: 100%;
-            background: var(--brand-bronze);
-            animation: loading 2s infinite linear;
-        }
-
-        @keyframes loading {
-            0% { left: -50%; }
-            100% { left: 100%; }
-        }
-
-        /* Footer Styling matching the provided banner */
+        /* Footer Redesign - Multi-column Corporate */
         footer {
             width: 100%;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-dark {
             background-color: var(--brand-dark);
-            padding: 3rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            color: var(--text-light);
-            flex: 1;
-            min-width: 280px;
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            color: var(--text-light);
-            margin-right: 1rem;
-            font-weight: 300;
+            padding: 4rem 5% 3rem;
             display: flex;
             justify-content: center;
-            align-items: center;
-            width: 30px;
+            gap: 10%;
+            flex-wrap: wrap;
         }
 
-        .contact-item span {
+        .footer-column {
+            flex: 0 1 300px;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .column-heading {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--brand-bronze);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-content {
             font-size: 0.85rem;
-            line-height: 1.6;
+            line-height: 1.7;
             letter-spacing: 0.05em;
             opacity: 0.9;
         }
 
-        /* Justify alignments based on the original image */
-        .contact-item:nth-child(1) { justify-content: flex-start; }
-        .contact-item:nth-child(2) { justify-content: center; }
-        .contact-item:nth-child(3) { justify-content: flex-end; }
+        /* Adjustments for icons in headings */
+        .column-heading i {
+            font-size: 1rem;
+            font-weight: 300;
+        }
 
         .footer-bronze {
             background-color: var(--brand-bronze);
@@ -192,25 +212,27 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
             .footer-dark {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 3rem 10%;
+                gap: 5%;
+                justify-content: flex-start;
+                padding: 4rem 10% 3rem;
             }
-            .contact-item {
-                width: 100%;
-                justify-content: flex-start !important;
-            }
+        }
+        
+        @media (max-width: 900px) {
             h1.company-name {
                 font-size: 2.2rem;
             }
-            .coming-soon-text {
-                font-size: 1.5rem;
+            .sub-heading {
+                font-size: 1.8rem;
             }
         }
         
         @media (max-width: 480px) {
+            main {
+                padding: 3rem 1rem;
+            }
             h1.company-name {
                 font-size: 1.8rem;
             }
@@ -218,14 +240,24 @@
                 font-size: 0.75rem;
                 letter-spacing: 0.15em;
             }
+            .progress-indicator {
+                width: 250px;
+            }
+            .footer-dark {
+                padding: 3rem 5%;
+            }
         }
     </style>
 </head>
 <body>
 
+    <svg class="wave-bg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+        <path class="wave-path" d="M0,10 C150,50 350,0 500,10 C650,20 850,-10 1000,10 L1000,100 L0,100 Z"></path>
+    </svg>
+
     <main>
         <div class="logo-container">
-            <img src="image_086409.png" alt="Galileos Trade & Services LTD Logo">
+            <img src="image_1.png" alt="Galileos Trade & Services LTD Logo">
         </div>
         
         <h1 class="company-name">Galileos</h1>
@@ -233,27 +265,51 @@
         
         <div class="divider"></div>
         
-        <div class="coming-soon-text">Website Coming Soon</div>
+        <div class="sub-heading">Setting Course for Our New Digital Presence</div>
         <p class="description">
-            We are currently developing a state-of-the-art digital presence to better serve our global maritime and trade partners. Excellence is on the horizon.
+            We are currently refining our online platform to better connect with our global maritime partners. We appreciate your patience and look forward to welcoming you soon.
         </p>
         
-        <div class="loading-line"></div>
+        <div class="progress-indicator">
+            <div class="progress-line"></div>
+            <i class="fa-solid fa-ship"></i>
+            <div class="progress-line"></div>
+        </div>
     </main>
 
     <footer>
         <div class="footer-dark">
-            <div class="contact-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>UNIT 917B 9/F TOWER A NEW<br>MANDARIN PLAZA NO 14 SCIENCE,<br>MUSEUM RD TST, KL</span>
+            <div class="footer-column">
+                <div class="column-heading">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Headquarters
+                </div>
+                <div class="footer-content">
+                    UNIT 917B 9/F TOWER A NEW<br>
+                    MANDARIN PLAZA NO 14 SCIENCE,<br>
+                    MUSEUM RD TST, KL
+                </div>
             </div>
-            <div class="contact-item">
-                <i class="fa-regular fa-envelope"></i>
-                <span>info@galileos.com</span>
+
+            <div class="footer-column">
+                <div class="column-heading">
+                    <i class="fa-regular fa-envelope"></i>
+                    Inquiries
+                </div>
+                <div class="footer-content">
+                    info@galileos.com
+                </div>
             </div>
-            <div class="contact-item">
-                <i class="fa-solid fa-globe"></i>
-                <span>www.galileos.com</span>
+
+            <div class="footer-column">
+                <div class="column-heading">
+                    <i class="fa-solid fa-binnacle"></i>
+                    Safety First
+                </div>
+                <div class="footer-content">
+                    Our unwavering commitment to<br>
+                    professionalism and onboard safety.
+                </div>
             </div>
         </div>
         <div class="footer-bronze"></div>
