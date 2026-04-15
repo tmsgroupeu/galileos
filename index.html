@@ -39,14 +39,14 @@
             background-color: var(--brand-dark);
         }
 
-        /* Video Background Styling */
+        /* Video Background Container */
         .video-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
+            z-index: -1; /* Container sent to the back */
             overflow: hidden;
             background-color: var(--brand-dark);
         }
@@ -59,17 +59,18 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            z-index: 1; /* Video sits on bottom layer of the container */
         }
 
-        /* The Masking Overlay - Opacity increased to 85% for a subtle, muted video effect */
+        /* The Masking Overlay - FIXED Z-INDEX */
         .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(31, 33, 32, 0.85); 
-            z-index: -1;
+            background-color: rgba(31, 33, 32, 0.60); /* 60% dark charcoal layer, leaving 40% video visibility */
+            z-index: 2; /* Forces the overlay to sit visibly ON TOP of the video */
         }
 
         /* Animations */
@@ -95,7 +96,7 @@
             text-align: center;
             animation: fadeInUp 1s ease-out forwards;
             position: relative;
-            z-index: 1; 
+            z-index: 10; /* Guarantees text is completely on top of everything */
         }
 
         .logo-container {
@@ -177,7 +178,7 @@
         footer {
             width: 100%;
             position: relative;
-            z-index: 1;
+            z-index: 10; /* Guarantees footer is completely on top */
         }
 
         .footer-dark {
