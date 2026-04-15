@@ -158,7 +158,7 @@
             background: rgba(0,0,0,0.1);
         }
 
-        /* Footer Redesign - Multi-column Corporate */
+        /* Footer Redesign - Slimmer & Tighter */
         footer {
             width: 100%;
             position: relative;
@@ -167,24 +167,24 @@
 
         .footer-dark {
             background-color: var(--brand-dark);
-            padding: 4rem 5% 3rem;
+            padding: 2.5rem 5% 1.5rem; /* Reduced padding to make it slimmer */
             display: flex;
             justify-content: center;
-            gap: 10%;
+            gap: 8%;
             flex-wrap: wrap;
         }
 
         .footer-column {
-            flex: 0 1 300px;
+            flex: 0 1 280px;
             color: var(--text-light);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem; /* Tighter bottom margin */
         }
 
         .column-heading {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: var(--brand-bronze);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             display: flex;
@@ -193,13 +193,12 @@
         }
 
         .footer-content {
-            font-size: 0.85rem;
-            line-height: 1.7;
+            font-size: 0.8rem; /* Slightly smaller text for a more refined look */
+            line-height: 1.6;
             letter-spacing: 0.05em;
-            opacity: 0.9;
+            opacity: 0.85;
         }
 
-        /* Adjustments for icons in headings */
         .column-heading i {
             font-size: 1rem;
             font-weight: 300;
@@ -207,7 +206,7 @@
 
         .footer-bronze {
             background-color: var(--brand-bronze);
-            height: 40px;
+            height: 25px; /* Thinner bronze strip */
             width: 100%;
         }
 
@@ -216,7 +215,7 @@
             .footer-dark {
                 gap: 5%;
                 justify-content: flex-start;
-                padding: 4rem 10% 3rem;
+                padding: 2.5rem 10% 1.5rem;
             }
         }
         
@@ -244,7 +243,9 @@
                 width: 250px;
             }
             .footer-dark {
-                padding: 3rem 5%;
+                padding: 2rem 5%;
+                flex-direction: column;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -257,7 +258,7 @@
 
     <main>
         <div class="logo-container">
-            <img src="image_1.png" alt="Galileos Trade & Services LTD Logo">
+            <img src="image_086409.png" alt="Galileos Trade & Services LTD Logo">
         </div>
         
         <h1 class="company-name">Galileos</h1>
@@ -281,7 +282,7 @@
         <div class="footer-dark">
             <div class="footer-column">
                 <div class="column-heading">
-                    <i class="fa-solid fa-location-dot"></i>
+                    <i class="fa-solid fa-map-pin"></i>
                     Headquarters
                 </div>
                 <div class="footer-content">
@@ -303,7 +304,7 @@
 
             <div class="footer-column">
                 <div class="column-heading">
-                    <i class="fa-solid fa-binnacle"></i>
+                    <i class="fa-solid fa-life-ring"></i>
                     Safety First
                 </div>
                 <div class="footer-content">
